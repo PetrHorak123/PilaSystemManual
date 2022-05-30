@@ -23,14 +23,14 @@ class AuthorizedController extends Controller
 
     public function news()
     {
-        $response = Http::acceptJson()->withToken('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')->get('https://api.github.com/repos/PetrHorak123/PilaSystem/commits');
+        $response = Http::acceptJson()->withToken('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')->get('https://api.github.com/repos/PetrHorak123/PilaSystem/commits');
 
         $result = [];
 
         foreach ($response->json() as $commit) {
 
             $itemToAdd = new CommitViewModel();
-            
+
             $itemToAdd->date = date("d.m.y", strtotime($commit["commit"]["committer"]["date"]));
             $itemToAdd->message = $commit["commit"]["message"];
             $itemToAdd->url = $commit["html_url"];
@@ -83,7 +83,7 @@ class AuthorizedController extends Controller
 
     function get_latest_news()
     {
-        $response = Http::acceptJson()->withToken('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')->get('https://api.github.com/repos/PetrHorak123/PilaSystem/commits');
+        $response = Http::acceptJson()->withToken('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')->get('https://api.github.com/repos/PetrHorak123/PilaSystem/commits');
 
         $itemToAdd = new CommitViewModel();        
             
